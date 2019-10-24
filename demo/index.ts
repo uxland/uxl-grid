@@ -1,4 +1,4 @@
-import { UxlGrid } from "../src/components";
+import { UxlGrid } from "../src/components/uxl-grid/uxl-grid";
 const grid = new UxlGrid();
 
 const items = [
