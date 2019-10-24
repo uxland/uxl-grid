@@ -23,7 +23,7 @@ jobs:
       - name: Deploy to registry
         run: npx semantic-release --no-ci --dry-run --debug
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   # deploy:
   #   name: Deploy
