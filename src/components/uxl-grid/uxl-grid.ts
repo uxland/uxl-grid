@@ -1,8 +1,9 @@
+import { listen, propertiesObserver } from "@uxland/uxl-utilities";
 import { css, customElement, html, LitElement, property, query, unsafeCSS } from "lit-element";
 import styles from "./styles.scss";
 import { template } from "./template";
-import { listen, propertiesObserver } from "@uxland/uxl-utilities";
 import * as R from "ramda";
+
 
 interface IColumns {
   property: string;
@@ -11,9 +12,10 @@ interface IColumns {
 }
 
 type IOrder = "ASC" | "DES";
-
+// @ts-ignore
 @customElement("uxl-grid")
 export class UxlGrid extends propertiesObserver(LitElement) {
+
 
   @property()
   public source: any[] = [];
@@ -84,23 +86,12 @@ export class UxlGrid extends propertiesObserver(LitElement) {
     this.orderedList = this.source;
   }
 
-  sourceChanged(){
-    this.orderedList = this.source;
-    if(this.selectedColumn){
-      this.orderedList = this.sortColumn();
-    }
-  }
-
-
-  filterOrderListByField(): any[]{
-    if(this.selectedField){
-      if(this.order === "ASC"){
-      }
-    
-    }
-    return this.orderedList;
-  }
-
+  // sourceChanged(){
+  //   this.orderedList = this.source;
+  //   if(this.selectedColumn){
+  //     this.orderedList = this.sortColumn();
+  //   }
+  // }
 
   public render() {
     return html`

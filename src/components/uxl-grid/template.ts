@@ -1,4 +1,4 @@
-import { html } from "lit-element";
+import { html } from "lit-element/lit-element";
 import { repeat } from "lit-html/directives/repeat";
 import { UxlGrid} from "./uxl-grid";
 import {iconTemplate} from "../../icons/icons";
