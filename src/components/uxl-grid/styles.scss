@@ -1,0 +1,46 @@
+
+.table{
+  @include layout;  
+  border: 1px solid #c8c7c9;
+
+  tbody{
+    width: 100%;
+  }
+
+  .table__header{
+    @include layout;
+    flex: 1 1 100%;
+    justify-content: space-between;
+    padding: 12px 32px;
+    border-bottom: 2px solid #c8c7c9;
+
+    .table__header-cell{
+      @include layout;
+      flex: 1;
+      font-size: $uxl-units-size-12;
+      cursor: pointer;
+      align-items: center;
+
+      iron-icon{
+        height: $uxl-units-size-12;
+        width: $uxl-units-size-12;
+      }
+    }
+  }
+
+  .table__row{
+    @include layout;
+    flex: 1 1 100%;
+    justify-content: space-between;
+    padding: 12px 32px;
+    border-bottom: 1px solid #c8c7c9;
+
+    .table__row-cell{
+      @include layout;
+      flex: 1;
+      font-weight: 400;
+      font-size: $uxl-units-size-12;
+      cursor: pointer;
+    }
+  }
+}
