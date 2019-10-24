@@ -21,6 +21,6 @@
       "tslib": ["node_modules/tslib/tslib.d.ts"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*",  "global.d.ts"],
   "exclude": ["node_modules", "es", "test"]
 }
