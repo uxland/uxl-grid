@@ -5,13 +5,13 @@ import { template } from "./template";
 import * as R from "ramda";
 
 
-interface IColumns {
+export interface IColumns {
   property: string;
   displayName: string;
   order?: IOrder;
 }
 
-type IOrder = "ASC" | "DES";
+export type IOrder = "ASC" | "DES";
 // @ts-ignore
 @customElement("uxl-grid")
 export class UxlGrid extends propertiesObserver(LitElement) {
