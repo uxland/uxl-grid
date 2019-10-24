@@ -86,12 +86,12 @@ export class UxlGrid extends propertiesObserver(LitElement) {
     this.orderedList = this.source;
   }
 
-  // sourceChanged(){
-  //   this.orderedList = this.source;
-  //   if(this.selectedColumn){
-  //     this.orderedList = this.sortColumn();
-  //   }
-  // }
+  sourceChanged(){
+    this.orderedList = this.source;
+    if(this.selectedColumn){
+      this.orderedList = this.sortColumn();
+    }
+  }
 
   public render() {
     return html`
