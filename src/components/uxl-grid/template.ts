@@ -3,6 +3,7 @@ import { repeat } from "lit-html/directives/repeat";
 import { UxlGrid} from "./uxl-grid";
 import {iconTemplate} from "../../icons/icons";
 import { nothing } from 'lit-html';
+import { classMap } from "lit-html/directives/class-map";
 
 
 export const template = (props: UxlGrid) => html`
@@ -11,8 +12,8 @@ export const template = (props: UxlGrid) => html`
     <tr class="table__header" part="table__header">
       ${repeat(
         props.columns,
-        column => html`
-          <td class="table__header-cell" data-column="${JSON.stringify(column)}" part="table__header-cell">
+        (column, index) => html`
+          <td id="header-${index + 1}" class="table__header-cell" data-column="${JSON.stringify(column)}" part="table__header-cell">
             ${column.displayName || ""}
             ${column.order == "ASC"
               ? html`
@@ -31,12 +32,12 @@ export const template = (props: UxlGrid) => html`
     </tr>
     ${repeat(
       props.orderedList,
-      item => html`
-        <tr class="table__row" part="table__row">
+      (item, index) => html`
+        <tr id="row-${index + 1}" class="table__row ${classMap({disabled: item.disabled})}" part="table__row">
           ${repeat(
             props.columns,
-            column => html`
-              <td class="table__row-cell" part="table__row-cell" data-item="${JSON.stringify(item)}">${item[column.property] || ""}</td>
+            (column, index) => html`
+              <td id="column-${index + 1}" class="table__row-cell" part="table__row-cell" data-item="${JSON.stringify(item)}">${item[column.property] || ""}</td>
             `
           )}
         </tr>

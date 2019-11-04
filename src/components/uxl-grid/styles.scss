@@ -42,5 +42,14 @@
       font-size: $uxl-units-size-12;
       cursor: pointer;
     }
+
+    &.disabled{
+      color: var(--table-row-disabled-color, grey);
+      cursor: default;
+
+      .table__row-cell {
+        cursor: default;
+      }
+    }
   }
 }

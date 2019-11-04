@@ -36,7 +36,8 @@ const items = [
     id: 1,
     nombre: "RTTCampo5",
     apellido:"LLKKApellido5",
-    edad: 23
+    edad: 23,
+    disabled: true
 },
     {
     id: 1,
