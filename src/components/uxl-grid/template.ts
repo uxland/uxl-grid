@@ -13,7 +13,7 @@ export const template = (props: UxlGrid) => html`
       ${repeat(
         props.columns,
         (column, index) => html`
-          <td id="header-${index + 1}" class="table__header-cell" data-column="${JSON.stringify(column)}" part="table__header-cell">
+          <td id="header-${index + 1}" class="table__header-cell" data-column="${JSON.stringify(column)}" part="table__header-cell-${index + 1}">
             ${column.displayName || ""}
             ${column.order == "ASC"
               ? html`

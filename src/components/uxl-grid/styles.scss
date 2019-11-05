@@ -1,13 +1,5 @@
-@mixin uxl-grid($type,$number,$property,$value) {
-  ##{$type}-#{$number} {
-    $property: var(--uxl-grid-#{$type}-#{$number}-#{$property}, $value);
-  }
-}
-
-@include uxl-grid(row,2,color,red);
-
 :host {
---uxl-grid-row-2-color: red;
+
 }
 
 .table {
@@ -44,15 +36,21 @@
     @include layout;
     flex: 1 1 100%;
     justify-content: space-between;
-    padding: 12px 32px;
+    padding: 0 32px;
     border-bottom: 1px solid #c8c7c9;
+
+    &:hover {
+      background-color: var(--uxl-grid-row-hover-color, #FBF7F5);
+    }
 
     .table__row-cell {
       @include layout;
+      padding: 24px 0;
       flex: 1;
       font-weight: 400;
       font-size: $uxl-units-size-12;
       cursor: pointer;
+
     }
 
     &.disabled {
