@@ -37,7 +37,7 @@ export const template = (props: UxlGrid) => html`
           ${repeat(
             props.columns,
             (column, index) => html`
-              <td id="column-${index + 1}" class="table__row-cell" part="table__row-cell" data-item="${JSON.stringify(item)}">${item[column.property] || ""}</td>
+              <td id="column-${index + 1}" class="table__row-cell" part="table__row-cell-${index + 1}" data-item="${JSON.stringify(item)}">${item[column.property] || ""}</td>
             `
           )}
         </tr>

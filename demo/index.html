@@ -20,7 +20,17 @@
     </script>
   </head>
   <body>
-    <style></style>
+    <style>
+		
+		uxl-grid {
+			--uxl-grid-icon-color: #{#CC0000};
+		}
+		
+		uxl-grid::part(table__row-cell-2) {
+			color: red;
+		}
+		
+	</style>
     <script defer src="<%= htmlWebpackPlugin.options.paths.webcomponents %>"></script>
     <div>UXL-Grid demo</div>
     <div class="content"></div>
