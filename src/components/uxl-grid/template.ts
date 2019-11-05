@@ -10,6 +10,7 @@ export const template = (props: UxlGrid) => html`
   ${iconTemplate()}
   <table class="table" part="table">
     <tr class="table__header" part="table__header">
+    
       ${repeat(
         props.columns,
         (column, index) => html`
