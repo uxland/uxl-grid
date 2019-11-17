@@ -7,13 +7,14 @@ import {IColumns} from "../../domain";
 
 @customElement('format-grid')
 export class FormatGrid extends (LitElement) {
-	
+
 	@property()
 	public source: any[] = [];
 	
 	@property()
 	public orderedList: any[] = [];
 	
+
 	@property()
 	public columns: IColumns[] = [];
 	
