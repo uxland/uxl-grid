@@ -5,7 +5,7 @@ import {nothing} from "lit-html";
 import {classMap} from "lit-html/directives/class-map";
 
 export const template = (props: FormatGrid) => html`
-<div class="header">
+<div class="header" part="header">
 	${repeat(
 		props.columns,
 		(column, index) => html`
