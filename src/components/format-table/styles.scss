@@ -1,0 +1,61 @@
+.table {
+  @include layout;
+  border: 1px solid #c8c7c9;
+
+  tbody {
+    width: 100%;
+  }
+
+  .table__header {
+    @include layout;
+    flex: 1 1 100%;
+    justify-content: space-between;
+    padding: 12px 32px;
+    border-bottom: 2px solid #c8c7c9;
+
+    .table__header-cell {
+      @include layout;
+      flex: 1;
+      font-size: $uxl-units-size-12;
+      cursor: pointer;
+      align-items: center;
+
+      iron-icon {
+        --iron-icon-fill: var(--uxl-grid-icon-color, grey);
+        height: $uxl-units-size-12;
+        width: $uxl-units-size-12;
+      }
+    }
+  }
+
+  .table__row {
+    @include layout;
+    flex: 1 1 100%;
+    justify-content: space-between;
+    padding: 0 32px;
+    border-bottom: 1px solid #c8c7c9;
+
+    &:hover {
+      background-color: var(--uxl-grid-row-hover-color, #FBF7F5);
+    }
+
+    .table__row-cell {
+      @include layout;
+      padding: 24px 0;
+      flex: 1;
+      font-weight: 400;
+      font-size: $uxl-units-size-12;
+      cursor: pointer;
+
+    }
+
+    &.disabled {
+      color: var(--table-row-disabled-color, grey);
+      cursor: default;
+
+      .table__row-cell {
+        cursor: default;
+      }
+    }
+  }
+}

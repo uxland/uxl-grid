@@ -94,7 +94,9 @@
     "travis-deploy-once": "travis-deploy-once",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "serve": "webpack-dev-server --hot --inline --progress"
+    "serve": "webpack-dev-server --hot --inline --progress",
+    "yo": "yo",
+    "create:component": "yo @uxland/lit-component"
   },
   "directories": {
     "test": "test"

@@ -1,69 +1,71 @@
-import { UxlGrid } from "../src/components/uxl-grid/uxl-grid";
+import {UxlGrid} from "../src/components/uxl-grid/uxl-grid";
+
 const grid = new UxlGrid();
 
 const items = [
-    {
-    id: 1,
-    nombre: "AAACampo1",
-    apellido:"CCCApellido1",
-    edad: 23
-},
-    {
-    id: 1,
-    nombre: "LLCampo2",
-    apellido:"MMMApellido2",
-    edad: 23
-},
-{
-    id: 1,
-    nombre: "YYYCampo6",
-    apellido:"AAAApellido6",
-    edad: 23
-},
-    {
-    id: 1,
-    nombre: "RRCampo3",
-    apellido:"LLLApellido3",
-    edad: 23
-},
-    {
-    id: 1,
-    nombre: "DFGCampo4",
-    apellido:"HHGGApellido4",
-    edad: 23
-},
-    {
-    id: 1,
-    nombre: "RTTCampo5",
-    apellido:"LLKKApellido5",
-    edad: 23,
-    disabled: true
-},
-    {
-    id: 1,
-    nombre: "EEECampo7",
-    apellido:"ALDKApellido7",
-    edad: 23
-}
+	{
+		id: 1,
+		nombre: "Campo 1",
+		apellido: "Apellido 1",
+		edad: 23
+	},
+	{
+		id: 1,
+		nombre: "Campo 2",
+		apellido: "Apellido 2",
+		edad: 23
+	},
+	{
+		id: 1,
+		nombre: "Campo 3",
+		apellido: "Apellido 3",
+		edad: 23
+	},
+	{
+		id: 1,
+		nombre: "Campo 4",
+		apellido: "Apellido 4",
+		edad: 23
+	},
+	{
+		id: 1,
+		nombre: "Campo 5",
+		apellido: "Apellido 5",
+		edad: 23,
+		disabled: true
+	},
+	{
+		id: 1,
+		nombre: "Campo 6",
+		apellido: "Apellido 6",
+		edad: 23
+	},
+	{
+		id: 1,
+		nombre: "Campo 7",
+		apellido: "Apellido 7",
+		edad: 23
+	}
 ];
 
 const columns = [
-    {
-        property: "edad",
-        displayName: "Edad de la persona"
-    },
-    {
-        property: "nombre",
-        displayName: "Nombre de la persona"
-    },
-    {
-        property: "apellido",
-        displayName: "Appellido de la persona"
-    }
+	{
+		property: "edad",
+		displayName: "Edad de la persona"
+	},
+	{
+		property: "nombre",
+		displayName: "Nombre de la persona"
+	},
+	{
+		property: "apellido",
+		displayName: "Apellido de la persona"
+	}
 ];
 
 grid.source = items;
 grid.columns = columns;
+grid.isFormatGrid = true;
 
 const content = document.querySelector(".content");
 content.appendChild(grid as any);

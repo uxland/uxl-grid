@@ -1,0 +1,44 @@
+:host {
+  min-height: 1px;
+  height: 100%;
+}
+
+@mixin format-grid {
+  display: grid;
+  gap: var(--uxl-grid-gap, 16px);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.header {
+  @include format-grid;
+
+  .header__cell {
+    text-transform: uppercase;
+
+    iron-icon {
+      --iron-icon-fill-color: var(--uxl-grid-order-icon-color, blue);
+      --iron-icon-width: 16px;
+      --iron-icon-height: 16px;
+    }
+  }
+}
+
+.content {
+  .content__row {
+    @include format-grid;
+    border-bottom: 1px solid grey;
+
+    &:hover:not(.disabled) {
+      background-color: var(--uxl-grid-row-hover-color, lightcyan);
+      cursor: pointer;
+    }
+
+    &.disabled {
+      color: var(--uxl-grid-row-disabled-color, lightgrey);
+    }
+
+    .content__cell {
+      padding: 16px 0;
+    }
+  }
+}
