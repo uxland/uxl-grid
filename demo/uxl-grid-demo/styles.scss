@@ -9,3 +9,9 @@
     margin-bottom: 32px;
   }
 }
+
+uxl-grid {
+  --uxl-grid-order-icon-color: #{green};
+  --uxl-grid-order-icon-width: 16px;
+  --uxl-grid-order-icon-height: 16px;
+}

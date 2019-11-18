@@ -16,9 +16,9 @@
     text-transform: uppercase;
 
     iron-icon {
-      --iron-icon-fill-color: var(--uxl-grid-order-icon-color, blue);
-      --iron-icon-width: 16px;
-      --iron-icon-height: 16px;
+      --iron-icon-fill-color: var(--uxl-grid-order-icon-color);
+      --iron-icon-width: var(--uxl-grid-order-icon-width);
+      --iron-icon-height: var(--uxl-grid-order-icon-height);
     }
   }
 }

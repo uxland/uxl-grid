@@ -13,12 +13,12 @@ export const template = (props: FormatGrid) => html`
             ${column.displayName || ""}
             ${column.order == "ASC"
 				? html`
-                  <iron-icon icon="uxl-grid:arrow-up"></iron-icon>
+                  <iron-icon class="order" icon="uxl-grid:arrow-up"></iron-icon>
                 `
 				: html`
                   ${column.order == "DES"
 						? html`
-                        <iron-icon icon="uxl-grid:arrow-down"></iron-icon>
+                        <iron-icon class="order" icon="uxl-grid:arrow-down"></iron-icon>
                       `
 						: nothing}
                 `}
