@@ -1,12 +1,13 @@
-import { html, LitElement, property, customElement, query, css, unsafeCSS} from 'lit-element';
+import { html, LitElement, property, customElement, css, unsafeCSS} from 'lit-element';
 import {template} from './template';
 import styles from './styles.scss';
 import {listen, propertiesObserver} from "@uxland/uxl-utilities";
 import * as R from "ramda";
 import {IColumns} from "../../domain";
 
+// @ts-ignore
 @customElement('format-grid')
-export class FormatGrid extends (LitElement) {
+export class FormatGrid extends propertiesObserver(LitElement) {
 
 	@property()
 	public source: any[] = [];
