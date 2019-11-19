@@ -9,7 +9,7 @@ export const template = (props: FormatGrid) => html`
 	${repeat(
 		props.columns,
 		(column, index) => html`
-			<div id="header-cell-${index + 1}" class="header__cell" data-column="${JSON.stringify(column)}" part="header__cell">
+			<div id="header-cell-${index + 1}" class="header__cell" data-column="${JSON.stringify(column)}" part="header__cell-${index + 1}">
             ${column.displayName || ""}
             ${column.order == "ASC"
 				? html`
