@@ -15,3 +15,16 @@ uxl-grid {
   --uxl-grid-order-icon-width: 16px;
   --uxl-grid-order-icon-height: 16px;
 }
+
+
+uxl-grid::part(header__cell) {
+  background-color: red;
+}
+
+uxl-grid::part(content__cell-1) {
+  background-color: lightgray;
+}
+
+uxl-grid::part(content__cell-2) {
+  background-color: #E5E5E5;
+}

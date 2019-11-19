@@ -9,7 +9,7 @@ export const template = (props: FormatGrid) => html`
 	${repeat(
 		props.columns,
 		(column, index) => html`
-			<div id="header-cell-${index + 1}" class="header__cell" data-column="${JSON.stringify(column)}" part="header__cell-${index + 1}">
+			<div id="header-cell-${index + 1}" class="header__cell" data-column="${JSON.stringify(column)}" part="header__cell">
             ${column.displayName || ""}
             ${column.order == "ASC"
 				? html`
@@ -25,7 +25,7 @@ export const template = (props: FormatGrid) => html`
 			</div>
 `)}
 	</div>
-	<div class="content">
+	<div class="content" part="content">
 	    ${repeat(
 		props.orderedList,
 		(item, index) => html`
@@ -33,7 +33,7 @@ export const template = (props: FormatGrid) => html`
           ${repeat(
 				props.columns,
 				(column, index) => html`
-              <div id="column-${index + 1}" class="content__cell" part="content__cell-${index + 1}" data-item="${JSON.stringify(item)}">${item[column.property] || ""}</div>
+              <div id="column-${index + 1}" class="content__cell" part="content__cell, content__cell-${index + 1}" data-item="${JSON.stringify(item)}">${item[column.property] || ""}</div>
             `
 		)}
         </div>
