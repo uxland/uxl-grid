@@ -29,12 +29,12 @@
     border-bottom: 1px solid grey;
 
     &:hover:not(.disabled) {
-      background-color: var(--uxl-grid-row-hover-color, lightcyan);
+      background-color: var(--uxl-grid-row-hover-color);
       cursor: pointer;
     }
 
     &.disabled {
-      color: var(--uxl-grid-row-disabled-color, lightgrey);
+      color: var(--uxl-grid-row-disabled-color);
     }
 
     .content__cell {

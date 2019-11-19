@@ -19,6 +19,12 @@ uxl-grid {
 
 uxl-grid::part(header__cell) {
   background-color: red;
+  font-size: 20px;
+}
+
+uxl-grid::part(content-cell) {
+  color: red !important;
+  font-size: 20px;
 }
 
 uxl-grid::part(content__cell-1) {
