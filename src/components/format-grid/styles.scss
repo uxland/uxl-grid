@@ -27,6 +27,7 @@
   .content__row {
     @include format-grid;
     border-bottom: 1px solid grey;
+    color: var(--uxl-grid-row-color);
 
     &:hover:not(.disabled) {
       background-color: var(--uxl-grid-row-hover-color);
