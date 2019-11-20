@@ -21,6 +21,9 @@ export class FormatGrid extends propertiesObserver(LitElement) {
 	
 	@property()
 	private selectedColumn: IColumns;
+
+	@property()
+	public showHeader: boolean = true;
 	
 	@listen("click", ".header__cell")
 	public onClickHeaderCell(event) {

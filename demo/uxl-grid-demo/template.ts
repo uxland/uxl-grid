@@ -9,6 +9,6 @@ export const template = (props: UxlGridDemo) => html`
    </div>
      <div class="demo">
         <h2>CSS Grid Mode</h2>
-        <uxl-grid .source="${props.source}" .columns="${props.columns}" .isFormatGrid="${true}"></uxl-grid>
+        <uxl-grid .source="${props.source}" .columns="${props.columns}" .isFormatGrid="${true}" .showHeader="${props.showHeader}"></uxl-grid>
    </div>
 `

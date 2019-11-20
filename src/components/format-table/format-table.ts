@@ -20,6 +20,9 @@ export class FormatTable extends propertiesObserver(LitElement) {
 	
 	@property()
 	private selectedColumn: IColumns;
+
+	@property()
+	public showHeader: boolean = true;
 	
 	@listen("click", ".table__header-cell")
 	public onClickHeaderCell(event) {

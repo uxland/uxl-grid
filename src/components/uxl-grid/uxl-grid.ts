@@ -19,6 +19,9 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 	
 	@property()
 	public isFormatGrid: boolean = false;
+
+	@property()
+    public showHeader: boolean = true;
 	
 
   public render() {

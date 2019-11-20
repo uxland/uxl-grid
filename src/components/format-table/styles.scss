@@ -1,5 +1,6 @@
 .table {
   @include layout;
+  @include layout-vertical;
   border: 1px solid #c8c7c9;
 
   tbody {

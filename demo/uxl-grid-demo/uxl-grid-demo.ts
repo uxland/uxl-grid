@@ -68,6 +68,9 @@ export class UxlGridDemo extends (LitElement) {
     }
   ];
 
+  @property()
+  public showHeader: boolean = false;
+
 
   render() {
     return html`${template(this)}`;

@@ -26,6 +26,8 @@ The following properties can be used to set up the component information
 |-----------------------------------|---------------------------------------|
 | `source`                           | Source data for the table. Need to be an array |
 | `columns`                         | That property defines the table columns to display, the property name of the data source item, the display name of the table  & the initial sort mode ("ASC or "DES") (optional). Need to be an array  `[{property: string; displayName: string; order?: IOrder;}]`|
+| `showHeader` | That property allow control the table header visibility. Default `true` | 
+
 
 
 ##### Styling
