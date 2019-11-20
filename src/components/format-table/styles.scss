@@ -51,7 +51,7 @@
     }
 
     &.disabled {
-      color: var(--table-row-disabled-color, grey);
+      color: var(--table-row-disabled-color);
       cursor: default;
 
       .table__row-cell {
