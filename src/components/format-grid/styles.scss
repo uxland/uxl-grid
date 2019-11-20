@@ -36,6 +36,7 @@
 
     &.disabled {
       color: var(--uxl-grid-row-disabled-color);
+      background-color: var(--uxl-grid-row-disabled-background-color);
     }
 
     .content__cell {
