@@ -34,7 +34,7 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 }
 
 export const gridWidth = () => {
-	const doc = <HTMLElement>document.getElementById('grid');
+	const doc: HTMLElement = document.getElementById('grid') as HTMLElement;
 	doc.style.setProperty('--grid-width', `${doc.offsetWidth}px`)
 }
 window.addEventListener('resize', gridWidth)
