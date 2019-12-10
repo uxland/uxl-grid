@@ -1,11 +1,15 @@
-:host{
+@import "../../src/components/uxl-grid/styles";
+
+:host {
   margin-bottom: 64px;
 }
 
-.demo{
+/*$uxl-mediaquery-phone: 200px;*/
+
+.demo {
   margin: 64px 8px;
 
-  h2{
+  h2 {
     margin-bottom: 32px;
   }
 }
@@ -21,17 +25,47 @@ uxl-grid {
 uxl-grid::part(header__cell) {
   background-color: red;
   font-size: 20px;
+
+  @include phone {
+    --uxl-mediaquery-phone: 599px;
+    padding: 0;
+  }
 }
 
-uxl-grid::part(content-cell) {
-  color: red !important;
-  font-size: 20px;
+uxl-grid::part(content__row) {
+
+  @include phone {
+    gap: 0;
+    padding: 16px;
+    border: 1px solid grey;
+    border-radius: 6px;
+    margin-bottom: 24px;
+  }
+}
+
+uxl-grid::part(content__cell) {
+
+
 }
 
 uxl-grid::part(content__cell-1) {
-  background-color: lightgray;
+  //background-color: lightgray;
+
+  @include phone {
+    padding: 0;
+  }
 }
 
 uxl-grid::part(content__cell-2) {
-  background-color: #E5E5E5;
+  //background-color: #E5E5E5;
+
+  @include phone {
+    padding: 0;
+  }
+}
+
+uxl-grid::part(content__cell-3) {
+  @include phone {
+    padding: 0;
+  }
 }

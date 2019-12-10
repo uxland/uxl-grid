@@ -41,6 +41,9 @@
 
     .content__cell {
       padding: 16px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }

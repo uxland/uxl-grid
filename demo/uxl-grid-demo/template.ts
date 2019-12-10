@@ -1,6 +1,6 @@
 import {html} from 'lit-element/lit-element';
 import { UxlGridDemo } from "./uxl-grid-demo";
-import "../../src/components/uxl-grid/uxl-grid"
+import "../../src/components/uxl-grid/uxl-grid";
 
 export const template = (props: UxlGridDemo) => html`
    <div class="demo">

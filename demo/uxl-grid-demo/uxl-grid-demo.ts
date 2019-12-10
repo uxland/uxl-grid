@@ -9,8 +9,8 @@ export class UxlGridDemo extends (LitElement) {
   public  source = [
     {
       id: 1,
-      nombre: "Campo 1",
-      apellido: "Apellido 1",
+      nombre: "Información de nombre del Campo 1",
+      apellido: "Información de nombre del Apellido 1",
       edad: 23
     },
     {
