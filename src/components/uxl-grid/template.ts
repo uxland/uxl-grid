@@ -6,11 +6,9 @@ import {nothing} from "lit-html";
 import {classMap} from "lit-html/directives/class-map";
 
 
-export const template = (props: UxlGrid) => html`
-  ${iconTemplate()}
-    <div id="grid">
-      ${props.showHeader ? html`
-	<div class="header" part="header">
+export const template = (props: UxlGrid) => html`${iconTemplate()}
+<div id="grid">
+	${props.showHeader ? html`<div class="header" part="header">
 	${repeat(
     props.columns,
     (column, index) => html`
@@ -42,10 +40,10 @@ export const template = (props: UxlGrid) => html`
       </div>
     `
 )}
-	</div>
+</div>
 ` : nothing}
-<div class="content" part="content" id="content">
-${repeat(
+	<div class="content" part="content" id="content">
+		${repeat(
     props.orderedList,
     (item, index) => html`
           <div
@@ -71,10 +69,10 @@ ${repeat(
           </div>
         `
 )}
-  </div>
+	</div>
 </div>
 </div>
-  
+
 `
 
 

@@ -4,7 +4,6 @@ import "../../src/components/uxl-grid/uxl-grid";
 
 export const template = (props: UxlGridDemo) => html`
      <div class="demo">
-        <h2>CSS Grid Mode</h2>
-        <uxl-grid .source="${props.source}" .columns="${props.columns}"></uxl-grid>
+        <uxl-grid .source="${props.source}" .columns="${props.columns}" exportparts="content__cell"></uxl-grid>
    </div>
 `

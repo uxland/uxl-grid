@@ -4,10 +4,9 @@
   margin-bottom: 64px;
 }
 
-/*$uxl-mediaquery-phone: 200px;*/
 
 .demo {
-  margin: 64px 8px;
+  margin: 32px 8px;
 
   h2 {
     margin-bottom: 32px;
@@ -15,12 +14,13 @@
 }
 
 uxl-grid {
-  --table-row-disabled-color: grey;
   --uxl-grid-order-icon-color: #{green};
   --uxl-grid-order-icon-width: 16px;
   --uxl-grid-order-icon-height: 16px;
   --uxl-grid-row-color: blue;
-
+  --uxl-grid-row-hover-color: ghostwhite;
+  --uxl-grid-row-disabled-color: grey;
+  --uxl-grid-row-disabled-background-color: snow;
 }
 
 
@@ -46,27 +46,5 @@ uxl-grid::part(content__row) {
 uxl-grid::part(content__cell-2) {
   @include phone {
     display: none;
-  }
-}
-
-uxl-grid::part(content__cell-1) {
-  //background-color: lightgray;
-
-  @include phone {
-    padding: 0;
-  }
-}
-
-uxl-grid::part(content__cell-2) {
-  //background-color: #E5E5E5;
-
-  @include phone {
-    padding: 0;
-  }
-}
-
-uxl-grid::part(content__cell-3) {
-  @include phone {
-    padding: 0;
   }
 }
