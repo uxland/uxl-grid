@@ -15,10 +15,12 @@
 }
 
 uxl-grid {
+  --table-row-disabled-color: grey;
   --uxl-grid-order-icon-color: #{green};
   --uxl-grid-order-icon-width: 16px;
   --uxl-grid-order-icon-height: 16px;
-  --uxl-grid-row-color: red;
+  --uxl-grid-row-color: blue;
+
 }
 
 
@@ -27,7 +29,6 @@ uxl-grid::part(header__cell) {
   font-size: 20px;
 
   @include phone {
-    --uxl-mediaquery-phone: 599px;
     padding: 0;
   }
 }
@@ -35,7 +36,6 @@ uxl-grid::part(header__cell) {
 uxl-grid::part(content__row) {
 
   @include phone {
-    gap: 0;
     padding: 16px;
     border: 1px solid grey;
     border-radius: 6px;
@@ -43,9 +43,10 @@ uxl-grid::part(content__row) {
   }
 }
 
-uxl-grid::part(content__cell) {
-
-
+uxl-grid::part(content__cell-2) {
+  @include phone {
+    display: none;
+  }
 }
 
 uxl-grid::part(content__cell-1) {

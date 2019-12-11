@@ -40,7 +40,7 @@ ${props.showHeader ? html `
 )}
 	</div>
 ` : nothing}
-	<div class="content" part="content">
+	<div class="content" part="content" id="content">
 	    ${repeat(
         props.orderedList,
         (item, index) => html`

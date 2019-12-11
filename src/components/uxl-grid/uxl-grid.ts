@@ -13,12 +13,37 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 	
 	@property()
 	public columns: IColumns[] = [];
+	
 	@property()
 	public isFormatGrid: boolean = false;
+	
 	@property()
 	public showHeader: boolean = true;
+	
+	@property()
+	public numberColumns: number;
+	
 	@property()
 	private selectedColumn: IColumns;
+	
+	gridWidth = () => {
+		const doc = this.shadowRoot.querySelector('#grid');
+		if (doc) {
+			doc.style.setProperty('--grid-width', `${doc.offsetWidth}px`)
+			//console.log(doc.offsetWidth);
+		}
+	}
+	
+	constructor() {
+		super();
+		window.addEventListener('resize', this.gridWidth)
+		this.gridWidth()
+	}
+	
+	firstUpdated(e) {
+		super.firstUpdated(e);
+		this.gridWidth();
+	}
 	
 	static get styles() {
 		return css`
@@ -31,11 +56,7 @@ export class UxlGrid extends propertiesObserver(LitElement) {
       ${template(this)}
     `;
 	}
+
 }
 
-export const gridWidth = () => {
-	const doc: HTMLElement = document.getElementById('grid') as HTMLElement;
-	doc.style.setProperty('--grid-width', `${doc.offsetWidth}px`)
-}
-window.addEventListener('resize', gridWidth)
-gridWidth()
+

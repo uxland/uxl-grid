@@ -1,4 +1,4 @@
-import { html, LitElement, property, customElement, css, unsafeCSS} from 'lit-element';
+import {html, LitElement, property, customElement, css, unsafeCSS} from 'lit-element';
 import {template} from './template';
 import styles from './styles.scss';
 import {listen, propertiesObserver} from "@uxland/uxl-utilities";
@@ -8,22 +8,28 @@ import {IColumns} from "../../domain";
 // @ts-ignore
 @customElement('format-grid')
 export class FormatGrid extends propertiesObserver(LitElement) {
-
+	
 	@property()
 	public source: any[] = [];
 	
 	@property()
 	public orderedList: any[] = [];
 	
-
 	@property()
 	public columns: IColumns[] = [];
 	
 	@property()
-	private selectedColumn: IColumns;
-
+	public numberColumns: number;
+	
 	@property()
 	public showHeader: boolean = true;
+	
+	@property()
+	private selectedColumn: IColumns;
+	
+	static get styles() {
+		return css`${unsafeCSS(styles)}`;
+	}
 	
 	@listen("click", ".header__cell")
 	public onClickHeaderCell(event) {
@@ -89,12 +95,7 @@ export class FormatGrid extends propertiesObserver(LitElement) {
 		}
 	}
 	
-  render() {
-    return html`${template(this)}`;
-  }
-
-
-  static get styles() {
-    return css`${unsafeCSS(styles)}`;
-  }
+	render() {
+		return html`${template(this)}`;
+	}
 }

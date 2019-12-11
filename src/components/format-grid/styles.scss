@@ -1,19 +1,38 @@
+@import "~@uxland/uxl-style-utilities/src/uxl-mediaqueries-styles";
+
 :host {
   min-height: 1px;
   height: 100%;
 }
 
+$min-grid: calc((var(--grid-width) - 32px) / 5);
+
+
 @mixin format-grid {
   display: grid;
-  gap: var(--uxl-grid-gap, 16px);
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  @include phone {
+    gap: 4px;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
+  }
+  @include tablet {
+    gap: var(--uxl-grid-gap, 16px);
+    grid-template-columns: repeat(auto-fit, minmax(#{$min-grid}, 1fr));
+  }
 }
 
 .header {
   @include format-grid;
+  border-bottom: 1px solid grey;
+
+  @include phone {
+    display: none;
+  }
 
   .header__cell {
-    text-transform: uppercase;
+    padding: 16px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     iron-icon {
       --iron-icon-fill-color: var(--uxl-grid-order-icon-color);

@@ -1,44 +1,7 @@
+@import "~@uxland/uxl-style-utilities/src/uxl-mediaqueries-styles";
 
 :host {
   min-height: 1px;
   height: 100%;
   @include layout-vertical;
-}
-
-/* Media Queries */
-
-$uxl-mediaquery-phone: 599px;
-$uxl-mediaquery-tablet: 600px;
-$uxl-mediaquery-tablet-landscape: 900px;
-$uxl-mediaquery-desktop: 1200px;
-$uxl-mediaquery-desktop-hd: 1800px;
-
-@mixin phone {
-  @media (max-width: #{$uxl-mediaquery-phone}) {
-    @content;
-  }
-}
-
-@mixin tablet-portrait {
-  @media (min-width: #{$uxl-mediaquery-tablet}) {
-    @content;
-  }
-}
-
-@mixin tablet-landscape {
-  @media (min-width: #{$uxl-mediaquery-tablet-landscape}) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: #{$uxl-mediaquery-desktop}) {
-    @content;
-  }
-}
-
-@mixin desktop-hd {
-  @media (min-width: #{$uxl-mediaquery-desktop-hd, 1800px}) {
-    @content;
-  }
 }
