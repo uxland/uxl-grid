@@ -25,8 +25,9 @@ uxl-grid {
 
 
 uxl-grid::part(header__cell) {
-  background-color: red;
-  font-size: 20px;
+  background-color: orange;
+  font-size: 16px;
+  text-transform: uppercase;
 
   @include phone {
     padding: 0;
@@ -41,6 +42,10 @@ uxl-grid::part(content__row) {
     border-radius: 6px;
     margin-bottom: 24px;
   }
+}
+
+uxl-grid::part(content__cell) {
+  background-color: lightcyan;
 }
 
 uxl-grid::part(content__cell-2) {

@@ -16,7 +16,7 @@ export const template = (props: UxlGrid) => html`${iconTemplate()}
         id="header-cell-${index + 1}"
         class="header__cell"
         data-column="${JSON.stringify(column)}"
-        part="header__cell-${index + 1}"
+        part="header__cell header__cell-${index + 1}"
       >
         ${column.displayName || ""}
         ${
@@ -58,7 +58,7 @@ export const template = (props: UxlGrid) => html`${iconTemplate()}
                   <div
                     id="column-${index + 1}"
                     class="content__cell"
-                    part="content__cell, content__cell-${index + 1}"
+                    part="content__cell content__cell-${index + 1}"
                     data-item="${JSON.stringify(item)}"
                   >
                     ${item[column.property] || ""}
