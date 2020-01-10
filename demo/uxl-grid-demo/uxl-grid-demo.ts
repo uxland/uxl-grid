@@ -1,7 +1,16 @@
 import {html, LitElement, property, customElement, query, css, unsafeCSS} from 'lit-element';
 import {template} from './template';
 import styles from './styles.scss';
+import { IColumns } from '../../src';
+import { id } from '@uxland/uxl-utilities';
 
+interface Item {
+    id;
+    nombre;
+    apellido;
+    edad;
+
+}
 @customElement('uxl-grid-demo')
 export class UxlGridDemo extends (LitElement) {
 	
@@ -64,24 +73,26 @@ export class UxlGridDemo extends (LitElement) {
 	;
 	
 	@property()
-	public columns = [
-		{
-			property: "edad",
-			displayName: "Edad de la persona"
-		},
-		{
-			property: "nombre",
-			displayName: "Nombre de la persona"
-		},
-		{
-			property: "apellidos",
-			displayName: "Apellidos de la persona"
-		},
-		{
-			property: "sexo",
-			displayName: "Sexo de la persona"
-		}
-	];
+	public columns :IColumns[] = [
+    {
+      property: "edad",
+      displayName: "Edad de la persona"
+    },
+    {
+      property: "nombre",
+      displayName: "Nombre de la persona"
+    },
+    {
+      property: "apellido",
+      displayName: "Apellido de la persona"
+    },
+    {
+      displayName:"Sin propiedad"
+    },
+    {
+      renderCell:(item:Item) => html `Rendered cell ${item.nombre}`
+    }
+  ];
 	
 	@property()
 	public showHeader: boolean = false;
