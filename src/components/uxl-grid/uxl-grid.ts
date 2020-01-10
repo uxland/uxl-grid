@@ -36,10 +36,18 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 	@property()
 	private selectedColumn: IColumns;
 
+	private findColumnIndex(displayName) {
+		return this.columns.findIndex((col) => col.displayName == (displayName || ""))
+	}
+	private findColumn(displayName): IColumns {
+		return this.columns[this.findColumnIndex(displayName)];
+	}
 	@listen("click", ".header__cell")
 	public onClickHeaderCell(event) {
+		console.log(event);
 		let htmlElement: HTMLElement = event.currentTarget;
-		if (htmlElement) this.selectedColumn = JSON.parse(htmlElement.dataset['column']);
+		let displayName = htmlElement.dataset['columnKey'];
+		if (htmlElement) this.selectedColumn = this.findColumn(displayName);
 		this.orderedList = this.sortColumn();
 	}
 
@@ -70,7 +78,7 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		if (this.selectedColumn) {
 			this.selectedColumn = this.toggleOrderField();
 			this.columns.forEach((c) => c.order = undefined);
-			const index = this.columns.findIndex((col) => col.property == this.selectedColumn.property);
+			const index = this.columns.findIndex((col) => col.displayName == (this.selectedColumn.displayName || ""));
 			if (index > -1) {
 				return R.pipe(
 					R.remove(index, 1),

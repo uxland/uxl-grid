@@ -87,11 +87,14 @@ export class UxlGridDemo extends (LitElement) {
       displayName: "Apellido de la persona"
     },
     {
-      displayName:"Sin propiedad"
+		displayName: "Nombre formateado",
+		property:"nombre",
+		renderCell:(item:Item) => html `N:${item.nombre} P:${item.apellido}`
     },
-    {
-      renderCell:(item:Item) => html `Rendered cell ${item.nombre}`
-    }
+	{
+		property: "apellido",
+		displayName: "Apellido de la persona"
+	}
   ];
 	
 	@property()
