@@ -47,7 +47,7 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		console.log(event);
 		let htmlElement: HTMLElement = event.currentTarget;
 		let displayName = htmlElement.dataset['columnKey'];
-		if (htmlElement) this.selectedColumn = this.findColumn(displayName);
+		this.selectedColumn = this.findColumn(displayName);
 		this.orderedList = this.sortColumn();
 	}
 
@@ -91,10 +91,8 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 
 	sortColumn() {
 		this.columns = this.changeColumnOrder();
-		if (!this.selectedColumn.order || this.selectedColumn.order == "ASC") {
-			return R.sort(R.ascend(R.prop(this.selectedColumn.property)))(this.orderedList);
-		}
-		return R.sort(R.descend(R.prop(this.selectedColumn.property)))(this.orderedList);
+		const order = !this.selectedColumn.order || this.selectedColumn.order == "ASC" ? R.ascend : R.descend;
+		return R.sort(order(this.selectedColumn.orderCellValue || R.prop(this.selectedColumn.property)))(this.orderedList);
 	}
 
 	sourceChanged() {

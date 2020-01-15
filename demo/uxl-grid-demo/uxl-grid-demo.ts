@@ -7,7 +7,7 @@ import { id } from '@uxland/uxl-utilities';
 interface Item {
     id;
     nombre;
-    apellido;
+    apellidos;
     edad;
 
 }
@@ -15,7 +15,7 @@ interface Item {
 export class UxlGridDemo extends (LitElement) {
 	
 	@property()
-	public source = [
+	public source: Item[] = [
 		{
 			id: 1,
 			nombre: "Antonio",
@@ -83,17 +83,19 @@ export class UxlGridDemo extends (LitElement) {
       displayName: "Nombre de la persona"
     },
     {
-      property: "apellido",
+      property: "apellidos",
       displayName: "Apellido de la persona"
     },
     {
 		displayName: "Nombre formateado",
 		property:"nombre",
-		renderCell:(item:Item) => html `N:${item.nombre} P:${item.apellido}`
-    },
+		renderCell:(item:Item) => html `N:${item.nombre} P:${item.apellidos}`
+	},
 	{
-		property: "apellido",
-		displayName: "Apellido de la persona"
+		property:"nombre",
+		displayName:"Ordenado por longitud de nombre",
+		renderCell:(item:Item) => html `${item.nombre} #${item.nombre.length}`,
+		orderCellValue: (item:Item) => item.nombre.length
 	}
   ];
 	
