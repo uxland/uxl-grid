@@ -31,6 +31,7 @@ The following properties can be used to set up the component information
 #### Column options
 
 | Property name                     | Description                           |
+|-----------------------------------|---------------------------------------|
 |    property                       | Property name value of the data source |
 |	displayName                     | Required.Display name of the table |
 |	order                           | Optional. Initial sort mode. Values: "ASC" or "DESC" |
