@@ -50,6 +50,7 @@ export const template = (props: UxlGrid) => html`${iconTemplate()}
             id="row-${index + 1}"
             class="content__row ${classMap({disabled: item.disabled})}"
             part="content__row"
+            data-item="${JSON.stringify(item)}"
           >
             ${
         repeat(

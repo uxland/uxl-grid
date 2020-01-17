@@ -51,7 +51,7 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		this.orderedList = this.sortColumn();
 	}
 
-	@listen("click", ".content__cell")
+	@listen("click", ".content__row")
 	public onClickTableRowCell(event) {
 		let htmlElement: HTMLElement = event.currentTarget;
 		let item = JSON.parse(htmlElement.dataset['item']);
