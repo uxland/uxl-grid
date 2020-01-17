@@ -66,10 +66,16 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 
 	toggleOrderField() {
 		let selectedColumnClone = R.clone(this.selectedColumn);
-		if (!selectedColumnClone.order || selectedColumnClone.order == "ASC") {
-			selectedColumnClone.order = "DES";
-		} else {
-			selectedColumnClone.order = "ASC";
+		switch (selectedColumnClone.order) {
+			case "ASC":
+				selectedColumnClone.order = null;
+				break;
+			case "DES":
+				selectedColumnClone.order = "ASC";
+				break;
+			default:
+				selectedColumnClone.order = "DES";
+				break;
 		}
 		return selectedColumnClone;
 	}
@@ -91,7 +97,10 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 
 	sortColumn() {
 		this.columns = this.changeColumnOrder();
-		const order = !this.selectedColumn.order || this.selectedColumn.order == "ASC" ? R.ascend : R.descend;
+		if(!this.selectedColumn.order) {
+			return this.source;
+		}
+		const order = this.selectedColumn.order == "ASC" ? R.ascend : R.descend;
 		return R.sort(order(this.selectedColumn.orderCellValue || R.prop(this.selectedColumn.property)))(this.orderedList);
 	}
 
