@@ -42,12 +42,24 @@ $min-grid: calc((var(--grid-width) - 32px) / var(--number-columns));
   }
 }
 
+
 .content {
+  .card {
+    display: none;
+    @include phone{
+      display: flex;
+    }
+  }
   .content__row {
     @include format-grid;
     border-bottom: 1px solid grey;
     color: var(--uxl-grid-row-color);
 
+    .card--enabled{
+      @include phone {
+        display: none;
+      }
+    }
     &:hover:not(.disabled) {
       background-color: var(--uxl-grid-row-hover-color);
       cursor: pointer;

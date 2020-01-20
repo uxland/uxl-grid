@@ -34,6 +34,9 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 	public showHeader: boolean = true;
 
 	@property()
+	public renderCard: (any)=>any;
+
+	@property()
 	private selectedColumn: IColumns;
 
 	private findColumnIndex(displayName) {
