@@ -26,6 +26,7 @@ The following properties can be used to set up the component information
 |-----------------------------------|---------------------------------------|
 | `source`                           | Source data for the table. Need to be an array |
 | `columns`                         | That property defines the table columns to display, the property name of the data source item, the display name of the table  & the initial sort mode ("ASC or "DES") (optional). Need to be an array  `[{property: string; displayName: string; order?: IOrder;}]`|
+| `renderCard`                         | Optional. This property sets a function that accepts the item as a parameter and return the html that will be  rendered as the contents of  the card that replaces the row when media query is phone size|
 | `showHeader` | That property allow control the table header visibility. Default `true` | 
 
 #### Column options
