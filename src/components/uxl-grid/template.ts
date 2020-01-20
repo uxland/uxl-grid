@@ -51,7 +51,7 @@ export const template = (props: UxlGrid) => html`${iconTemplate()}
         >
           ${props.renderCard ? html`
             <div class="card">${props.renderCard(item)}</div>
-          `: html`0`}
+          `: nothing}
           ${repeat(
             props.columns,
             (column, index) => html`
