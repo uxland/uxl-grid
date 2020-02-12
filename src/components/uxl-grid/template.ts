@@ -72,5 +72,4 @@ export const template = (props: UxlGrid) => html`${iconTemplate()}
 	</div>
 </div>
 </div>
-
 `;
