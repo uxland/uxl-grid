@@ -26,9 +26,18 @@ The following properties can be used to set up the component information
 |-----------------------------------|---------------------------------------|
 | `source`                           | Source data for the table. Need to be an array |
 | `columns`                         | That property defines the table columns to display, the property name of the data source item, the display name of the table  & the initial sort mode ("ASC or "DES") (optional). Need to be an array  `[{property: string; displayName: string; order?: IOrder;}]`|
+| `renderCard`                         | Optional. This property sets a function that accepts the item as a parameter and return the html that will be  rendered as the contents of  the card that replaces the row when media query is phone size|
 | `showHeader` | That property allow control the table header visibility. Default `true` | 
 
+#### Column options
 
+| Property name                     | Description                           |
+|-----------------------------------|---------------------------------------|
+|    property                       | Property name value of the data source |
+|	displayName                     | Required.Display name of the table |
+|	order                           | Optional. Initial sort mode. Values: "ASC" or "DESC" |
+|	renderCell                      | Optional. Function that receives item as a parameter and should return the html that should be rendered in that column for that item.Example: *(item) => html`${items.price}€`* In case, renderCell is not informed the property value will be rendered.|
+|	orderCellValue                  | Optional. Function that receives item as a parameter and should return the value of the cell when. Example: *(item) => item.name.length*. In case, orderCellValue is not informed the property value will be used to order|
 
 ##### Styling
 

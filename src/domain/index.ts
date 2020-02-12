@@ -1,6 +1,8 @@
 export interface IColumns {
-	property: string;
-	displayName: string;
+	property?: string;
+	displayName?: string;
+	renderCell?: (item: any) => any;
+	orderCellValue?: (item: any) => any;
 	order?: IOrder;
 	disabled?: boolean
 }

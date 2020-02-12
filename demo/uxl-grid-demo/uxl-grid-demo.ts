@@ -1,59 +1,79 @@
-import { html, LitElement, property, customElement, query, css, unsafeCSS} from 'lit-element';
+import {html, LitElement, property, customElement, query, css, unsafeCSS} from 'lit-element';
 import {template} from './template';
 import styles from './styles.scss';
+import { IColumns } from '../../src';
+import { id } from '@uxland/uxl-utilities';
 
+interface Item {
+    id;
+    nombre;
+    apellidos;
+    edad;
+
+}
 @customElement('uxl-grid-demo')
 export class UxlGridDemo extends (LitElement) {
-
-  @property()
-  public  source = [
-    {
-      id: 1,
-      nombre: "Campo 1",
-      apellido: "Apellido 1",
-      edad: 23
-    },
-    {
-      id: 1,
-      nombre: "Campo 2",
-      apellido: "Apellido 2",
-      edad: 23
-    },
-    {
-      id: 1,
-      nombre: "Campo 3",
-      apellido: "Apellido 3",
-      edad: 23
-    },
-    {
-      id: 1,
-      nombre: "Campo 4",
-      apellido: "Apellido 4",
-      edad: 23
-    },
-    {
-      id: 1,
-      nombre: "Campo 5",
-      apellido: "Apellido 5",
-      edad: 23,
-      disabled: true
-    },
-    {
-      id: 1,
-      nombre: "Campo 6",
-      apellido: "Apellido 6",
-      edad: 23
-    },
-    {
-      id: 1,
-      nombre: "Campo 7",
-      apellido: "Apellido 7",
-      edad: 23
-    }
-  ];
-
-  @property()
-  public columns = [
+	
+	@property()
+	public source: Item[] = [
+		{
+			id: 1,
+			nombre: "Antonio",
+			apellidos: "Garcia Martinez",
+			edad: 35,
+			sexo: "hombre"
+		},
+		{
+			id: 1,
+			nombre: "Maria",
+			apellidos: "Garcia Martinez",
+			edad: 35,
+			sexo: "mujer"
+		},
+		{
+			id: 1,
+			nombre: "Francisco Jose",
+			apellidos: "Lopez Sanchez",
+			edad: 23,
+			sexo: "hombre"
+		},
+		{
+			id: 1,
+			nombre: "Maria Dolores",
+			apellidos: "Lopez Sanchez",
+			edad: 23,
+			sexo: "mujer"
+		},
+		{
+			id: 1,
+			nombre: "Jose Antonio",
+			apellidos: "Gonzalez Gomez",
+			edad: 44,
+			sexo: "hombre",
+			disabled: true
+		}
+		
+		,
+		{
+			id: 1,
+			nombre:"Maria Dolores",
+			apellidos:"Gonzalez Gomez",
+			edad:44,
+			sexo: "mujer"
+		}
+		,
+		{
+			id: 1,
+			nombre: "Francisco Javier",
+			apellidos: "Jimenez Moreno",
+			edad: 54,
+			sexo: "hombre"
+		}
+	]
+	;
+	
+	@property()
+	public columns :IColumns[] = [
     {
       property: "edad",
       displayName: "Edad de la persona"
@@ -63,20 +83,33 @@ export class UxlGridDemo extends (LitElement) {
       displayName: "Nombre de la persona"
     },
     {
-      property: "apellido",
+      property: "apellidos",
       displayName: "Apellido de la persona"
-    }
+    },
+    {
+		displayName: "Nombre formateado",
+		property:"nombre",
+		renderCell:(item:Item) => html `N:${item.nombre} P:${item.apellidos}`
+	},
+	{
+		property:"nombre",
+		displayName:"Ordenado por longitud de nombre",
+		renderCell:(item:Item) => html `${item.nombre} #${item.nombre.length}`,
+		orderCellValue: (item:Item) => item.nombre.length
+	}
   ];
-
-  @property()
-  public showHeader: boolean = false;
-
-
-  render() {
-    return html`${template(this)}`;
-  }
-
-  static get styles() {
-    return css`${unsafeCSS(styles)}`;
-  }
+	
+	@property()
+	public showHeader: boolean = false;
+	
+	@property()
+	public numberColumns: number;
+	
+	static get styles() {
+		return css`${unsafeCSS(styles)}`;
+	}
+	
+	render() {
+		return html`${template(this)}`;
+	}
 }

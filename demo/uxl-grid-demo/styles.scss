@@ -1,11 +1,14 @@
-:host{
+@import "../../src/components/uxl-grid/styles";
+
+:host {
   margin-bottom: 64px;
 }
 
-.demo{
-  margin: 64px 8px;
 
-  h2{
+.demo {
+  margin: 32px 8px;
+
+  h2 {
     margin-bottom: 32px;
   }
 }
@@ -14,24 +17,39 @@ uxl-grid {
   --uxl-grid-order-icon-color: #{green};
   --uxl-grid-order-icon-width: 16px;
   --uxl-grid-order-icon-height: 16px;
-  --uxl-grid-row-color: red;
+  --uxl-grid-row-color: blue;
+  --uxl-grid-row-hover-color: ghostwhite;
+  --uxl-grid-row-disabled-color: grey;
+  --uxl-grid-row-disabled-background-color: snow;
 }
 
 
 uxl-grid::part(header__cell) {
-  background-color: red;
-  font-size: 20px;
+  background-color: orange;
+  font-size: 16px;
+  text-transform: uppercase;
+
+  @include phone {
+    padding: 0;
+  }
 }
 
-uxl-grid::part(content-cell) {
-  color: red !important;
-  font-size: 20px;
+uxl-grid::part(content__row) {
+
+  @include phone {
+    padding: 16px;
+    border: 1px solid grey;
+    border-radius: 6px;
+    margin-bottom: 24px;
+  }
 }
 
-uxl-grid::part(content__cell-1) {
-  background-color: lightgray;
+uxl-grid::part(content__cell) {
+  background-color: lightcyan;
 }
 
 uxl-grid::part(content__cell-2) {
-  background-color: #E5E5E5;
+  @include phone {
+    display: none;
+  }
 }
