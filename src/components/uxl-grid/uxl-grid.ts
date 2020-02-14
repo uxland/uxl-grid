@@ -123,6 +123,16 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		}
 	}
 
+	renderValue(item, property){
+		if(item[property] != undefined && item[property] != null){
+			if(item[property] == 0 && typeof(item[property]) == "number"){
+				return "0";
+			}
+			return item[property];
+		}
+		return "";
+	}
+
 	render() {
 		return html`${template(this)}`;
 	}
