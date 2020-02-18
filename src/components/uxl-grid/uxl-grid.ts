@@ -47,7 +47,6 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 	}
 	@listen("click", ".header__cell")
 	public onClickHeaderCell(event) {
-		console.log(event);
 		let htmlElement: HTMLElement = event.currentTarget;
 		let displayName = htmlElement.dataset['columnKey'];
 		this.selectedColumn = this.findColumn(displayName);
@@ -58,10 +57,26 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 	public onClickTableRowCell(event) {
 		let htmlElement: HTMLElement = event.currentTarget;
 		let item = JSON.parse(htmlElement.dataset['item']);
+		let row = Number.parseInt(htmlElement.dataset['row']);
 		if (item) {
 			const onTableRowCellSelected = new CustomEvent("uxl-grid-row-cell-selected", {
 				composed: true,
-				detail: {item}
+				detail: {item, row}
+			});
+			this.dispatchEvent(onTableRowCellSelected);
+		}
+	}
+
+	@listen("click", ".content__cell")
+	public onClickTableCell(event) {
+		let htmlElement: HTMLElement = event.currentTarget;
+		let item = JSON.parse(htmlElement.dataset['item']);
+		let column = Number.parseInt(htmlElement.dataset['column']);
+		let row = Number.parseInt(htmlElement.dataset['row']);
+		if (item) {
+			const onTableRowCellSelected = new CustomEvent("uxl-grid-content-cell-selected", {
+				composed: true,
+				detail: {item, column, row}
 			});
 			this.dispatchEvent(onTableRowCellSelected);
 		}

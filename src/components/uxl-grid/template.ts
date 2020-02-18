@@ -42,24 +42,27 @@ export const template = (props: UxlGrid) => html`${iconTemplate()}
 	<div class="content" part="content" id="content">
 		${repeat(
       props.orderedList,
-      (item, index) => html`
+      (item, indexRow) => html`
         <div
-          id="row-${index + 1}"
+          id="row-${indexRow + 1}"
           class="content__row ${classMap({ disabled: item.disabled })}"
           part="content__row"
           data-item="${JSON.stringify(item)}"
+          data-row="${indexRow + 1}"
         >
           ${props.renderCard ? html`
             <div class="card" part="card">${props.renderCard(item)}</div>
           `: nothing}
           ${repeat(
             props.columns,
-            (column, index) => html`
+            (column, indexColumn) => html`
                 <div
-                  id="column-${index + 1}"
+                  id="column-${indexColumn + 1}"
                   class="content__cell ${props.renderCard ? 'card--enabled' :''}"
-                  part="content__cell content__cell-${index + 1}"
+                  part="content__cell content__cell-${indexColumn + 1}"
                   data-item="${JSON.stringify(item)}"
+                  data-column="${indexColumn + 1}"
+                  data-row="${indexRow + 1}"
                 >
                   ${(column.renderCell && column.renderCell(item)) || props.renderValue(item, column.property)}
                 </div>
