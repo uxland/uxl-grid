@@ -170,6 +170,7 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		});
 	}
 
+
 	render() {
 		return html`${template(this)}`;
 	}
