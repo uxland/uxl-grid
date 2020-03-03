@@ -20,6 +20,11 @@ $min-grid: calc((var(--grid-width) - 32px) / var(--number-columns));
   }
 }
 
+#grid{
+  height: 100%;
+  min-height: 1px;
+}
+
 .header {
   @include format-grid;
   border-bottom: 1px solid grey;
@@ -44,16 +49,30 @@ $min-grid: calc((var(--grid-width) - 32px) / var(--number-columns));
 
 
 .content {
+  min-height: 1px;
+  height: 100%;
+
   .card {
     display: none;
     @include phone{
       display: flex;
     }
   }
-  .content__row {
-    @include format-grid;
+  
+.content__row {
+    // @include format-grid;
+    display: grid;
+    // grid-template-columns: 50% 100px auto;
+    grid-template-columns: repeat(auto-fit, minmax(#{$min-grid}, 1fr));
+    grid-template-rows: auto;
+    gap: var(--uxl-grid-gap, 16px);
+
+    // display: grid;
     border-bottom: 1px solid grey;
     color: var(--uxl-grid-row-color);
+    height: 50px;
+    // position: relative !important;
+ 
 
     .card--enabled{
       @include phone {
@@ -81,4 +100,8 @@ $min-grid: calc((var(--grid-width) - 32px) / var(--number-columns));
       }
     }
   }
+}
+
+lit-virtualizer{
+  height: 100%;
 }

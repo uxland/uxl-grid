@@ -28,6 +28,9 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 	public orderedList: any[] = [];
 
 	@property()
+	public virtualizeList: any[] = [];
+
+	@property()
 	public columns: IColumns[] = [];
 
 	@property()
@@ -147,6 +150,19 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		}
 		return "";
 	}
+
+	orderedListChanged(){
+		this.virtualizeList = this.orderedList.map((item) => {
+			return {item, renderCard: this.renderCard, columns: this.columns, renderValue: this.renderValue };
+		});
+	}
+
+	columnsChanged(){
+		this.virtualizeList = this.orderedList.map((item) => {
+			return {item, renderCard: this.renderCard, columns: this.columns, renderValue: this.renderValue };
+		});
+	}
+
 
 	render() {
 		return html`${template(this)}`;

@@ -2,11 +2,15 @@
 
 :host {
   margin-bottom: 64px;
+  min-height: 1px;
+  height: 100%;
 }
 
 
 .demo {
   margin: 32px 8px;
+  height: 100%;
+  min-height: 1px;
 
   h2 {
     margin-bottom: 32px;
@@ -41,6 +45,7 @@ uxl-grid::part(content__row) {
     border: 1px solid grey;
     border-radius: 6px;
     margin-bottom: 24px;
+    height: 50px;
   }
 }
 
@@ -53,3 +58,5 @@ uxl-grid::part(content__cell-2) {
     display: none;
   }
 }
+
+
