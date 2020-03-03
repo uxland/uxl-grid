@@ -14,13 +14,13 @@ export class UxlGridDemo extends (LitElement) {
 
 			let items: Item[] = [];
 			for(let i= 0; i< this.length; i++){
-				items.push({id: i, edad: Math.floor(Math.random() * 80) + 18 })
+				items.push({id: i, edad: Math.floor(Math.random() * 80) + 18, name: "Nombre", surname: "apellido" })
 			};
 			return items;
 		
 	}
 
-	length = 100;
+	length = 10000;
 	
 	@property()
 	public columns :IColumns[] = [
@@ -31,6 +31,14 @@ export class UxlGridDemo extends (LitElement) {
     {
       property: "edad",
       displayName: "Edad de la persona"
+		},
+		{
+      property: "name",
+      displayName: "Nombre"
+		},
+		{
+      property: "surname",
+      displayName: "Apellido"
     }
   ];
 	

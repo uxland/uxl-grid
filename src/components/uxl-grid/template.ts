@@ -68,7 +68,7 @@ export const template = (props: UxlGrid) => html`${iconTemplate()}
       : nothing
   }
 	<div class="content" part="content" id="content">
-    <lit-virtualizer  exportparts="content__row content__cell content__cell-*" .items="${props.virtualizeList}" .renderItem="${renderItem}"></lit-virtualizer>
+    <lit-virtualizer exportparts="content__row content__cell content__cell-*" .items="${props.virtualizeList}" .renderItem="${renderItem}"></lit-virtualizer>
 	</div>
 </div>
 </div>
