@@ -19,7 +19,6 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		this.orderedList = R.clone( this.source);
 		super.firstUpdated(e);
 		this.gridWidth();
-		window.addEventListener("click", this?.requestUpdate());
 	}
 
 	connectedCallback(){
