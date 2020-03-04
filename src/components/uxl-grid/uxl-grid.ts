@@ -11,7 +11,6 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 
 	constructor() {
 		super();
-		window.addEventListener('resize', this.gridWidth)
 		this.gridWidth()
 	}
 
@@ -23,10 +22,15 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 
 	connectedCallback(){
 		super.connectedCallback();
-		window.addEventListener("click", async () => {
-				this.source = R.clone(this.source);
-		});
+		window.addEventListener('resize', this.gridWidth);
+		window.addEventListener("click", this.onClickWindow);
 }
+
+	disconnectedCallback(){
+		super.disconnectedCallback();
+		window.removeEventListener("click", this.onClickWindow);
+		window.removeEventListener("resize", this.gridWidth);
+	}
 
 	@property()
 	public source: any[] = [];
@@ -153,6 +157,10 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 			//console.log(doc.offsetWidth);
 			doc.style.setProperty('--number-columns', `${this.columns.length + 1}`);
 		}
+	}
+
+	onClickWindow = () => {
+			this.source = R.clone(this.source);
 	}
 
 	renderValue(item, property){
