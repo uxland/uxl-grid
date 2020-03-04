@@ -23,13 +23,13 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 	connectedCallback(){
 		super.connectedCallback();
 		window.addEventListener('resize', this.gridWidth);
-		window.addEventListener("click", this.onClickWindow);
+		this.addEventListener("click", this.onClickWindow);
 }
 
 	disconnectedCallback(){
 		super.disconnectedCallback();
-		window.removeEventListener("click", this.onClickWindow);
 		window.removeEventListener("resize", this.gridWidth);
+		this.removeEventListener("click", this.onClickWindow);
 	}
 
 	@property()
