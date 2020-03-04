@@ -136,17 +136,19 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		return R.sort(order(this.selectedColumn.orderCellValue || R.prop(this.selectedColumn.property)))(this.orderedList);
 	}
 
-	sourceChanged() {
-		this.orderedList = R.clone(this.source);
-		if (this.selectedColumn) {
-			if(this.columns){
-				this.columns.forEach((column, index) => {
-						if(column.property == this.selectedColumn.property){
-								this.columns[index] = this.selectedColumn;
-						}
-				});
-		}
-			this.orderedList = R.clone(this.sortColumn());
+	sourceChanged(newSource, oldSource) {
+		if(!R.equals(newSource, oldSource)){
+			this.orderedList = R.clone(this.source);
+			if (this.selectedColumn) {
+				if(this.columns){
+					this.columns.forEach((column, index) => {
+							if(column.property == this.selectedColumn.property){
+									this.columns[index] = this.selectedColumn;
+							}
+					});
+			}
+				this.orderedList = R.clone(this.sortColumn());
+			}
 		}
 	}
 	
