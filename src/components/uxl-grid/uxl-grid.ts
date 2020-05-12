@@ -11,14 +11,25 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 
 	constructor() {
 		super();
-		window.addEventListener('resize', this.gridWidth)
 		this.gridWidth()
 	}
 
 	firstUpdated(e) {
-		this.orderedList = this.source;
+		this.orderedList = R.clone( this.source);
 		super.firstUpdated(e);
 		this.gridWidth();
+	}
+
+	connectedCallback(){
+		super.connectedCallback();
+		window.addEventListener('resize', this.gridWidth);
+		this.addEventListener("click", this.onClickWindow);
+}
+
+	disconnectedCallback(){
+		super.disconnectedCallback();
+		window.removeEventListener("resize", this.gridWidth);
+		this.removeEventListener("click", this.onClickWindow);
 	}
 
 	@property()
@@ -26,6 +37,9 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 
 	@property()
 	public orderedList: any[] = [];
+
+	@property()
+	public virtualizeList: any[] = [];
 
 	@property()
 	public columns: IColumns[] = [];
@@ -51,7 +65,7 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		let displayName = htmlElement.dataset['columnKey'];
 		this.selectedColumn = this.findColumn(displayName);
 		this.columns = this.changeColumnOrder();
-		this.orderedList = this.sortColumn();
+		this.orderedList = R.clone(this.sortColumn());
 	}
 
 	@listen("click", ".content__row")
@@ -122,17 +136,19 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		return R.sort(order(this.selectedColumn.orderCellValue || R.prop(this.selectedColumn.property)))(this.orderedList);
 	}
 
-	sourceChanged() {
-		this.orderedList = this.source;
-		if (this.selectedColumn) {
-			if(this.columns){
-				this.columns.forEach((column, index) => {
-						if(column.property == this.selectedColumn.property){
-								this.columns[index] = this.selectedColumn;
-						}
-				});
-		}
-			this.orderedList = this.sortColumn();
+	sourceChanged(newSource, oldSource) {
+		if(!R.equals(newSource, oldSource)){
+			this.orderedList = R.clone(this.source);
+			if (this.selectedColumn) {
+				if(this.columns){
+					this.columns.forEach((column, index) => {
+							if(column.property == this.selectedColumn.property){
+									this.columns[index] = this.selectedColumn;
+							}
+					});
+			}
+				this.orderedList = R.clone(this.sortColumn());
+			}
 		}
 	}
 	
@@ -145,6 +161,10 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		}
 	}
 
+	onClickWindow = () => {
+			this.source = R.clone(this.source);
+	}
+
 	renderValue(item, property){
 		if(item[property] != undefined && item[property] != null){
 			if(item[property] == 0 && typeof(item[property]) == "number"){
@@ -154,6 +174,19 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		}
 		return "";
 	}
+
+	orderedListChanged(){
+		this.virtualizeList = R.clone(this.orderedList.map((item) => {
+			return {item, renderCard: this.renderCard, columns: this.columns, renderValue: this.renderValue };
+		}))
+	}
+
+	columnsChanged(){
+		this.virtualizeList = R.clone(this.orderedList.map((item) => {
+			return {item, renderCard: this.renderCard, columns: this.columns, renderValue: this.renderValue };
+		}))
+	}
+
 
 	render() {
 		return html`${template(this)}`;

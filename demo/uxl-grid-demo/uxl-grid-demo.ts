@@ -3,100 +3,43 @@ import {template} from './template';
 import styles from './styles.scss';
 import { IColumns } from '../../src';
 import { id } from '@uxland/uxl-utilities';
-
 interface Item {
-    id;
-    nombre;
-    apellidos;
-    edad;
-
+	id: number;
+	edad: number;
 }
 @customElement('uxl-grid-demo')
 export class UxlGridDemo extends (LitElement) {
 	
-	@property()
-	public source: Item[] = [
-		{
-			id: 1,
-			nombre: "Antonio",
-			apellidos: "Garcia Martinez",
-			edad: 35,
-			sexo: "hombre"
-		},
-		{
-			id: 1,
-			nombre: "Maria",
-			apellidos: "Garcia Martinez",
-			edad: 35,
-			sexo: "mujer"
-		},
-		{
-			id: 1,
-			nombre: "Francisco Jose",
-			apellidos: "Lopez Sanchez",
-			edad: 23,
-			sexo: "hombre"
-		},
-		{
-			id: 1,
-			nombre: "Maria Dolores",
-			apellidos: "Lopez Sanchez",
-			edad: 23,
-			sexo: "mujer"
-		},
-		{
-			id: 1,
-			nombre: "Jose Antonio",
-			apellidos: "Gonzalez Gomez",
-			edad: 44,
-			sexo: "hombre",
-			disabled: true
-		}
+	get source(){
+
+			let items: Item[] = [];
+			for(let i= 0; i< this.length; i++){
+				items.push({id: i, edad: Math.floor(Math.random() * 80) + 18, name: "Nombre", surname: "apellido" })
+			};
+			return items;
 		
-		,
-		{
-			id: 1,
-			nombre:"Maria Dolores",
-			apellidos:"Gonzalez Gomez",
-			edad:44,
-			sexo: "mujer"
-		}
-		,
-		{
-			id: 1,
-			nombre: "Francisco Javier",
-			apellidos: "Jimenez Moreno",
-			edad: 54,
-			sexo: "hombre"
-		}
-	]
-	;
+	}
+
+	length = 10000;
 	
 	@property()
 	public columns :IColumns[] = [
+		{
+			property: "id",
+			displayName: "ID"
+		},
     {
       property: "edad",
       displayName: "Edad de la persona"
-    },
-    {
-      property: "nombre",
-      displayName: "Nombre de la persona"
-    },
-    {
-      property: "apellidos",
-      displayName: "Apellido de la persona"
-    },
-    {
-		displayName: "Nombre formateado",
-		property:"nombre",
-		renderCell:(item:Item) => html `N:${item.nombre} P:${item.apellidos}`
-	},
-	{
-		property:"nombre",
-		displayName:"Ordenado por longitud de nombre",
-		renderCell:(item:Item) => html `${item.nombre} #${item.nombre.length}`,
-		orderCellValue: (item:Item) => item.nombre.length
-	}
+		},
+		{
+      property: "name",
+      displayName: "Nombre"
+		},
+		{
+      property: "surname",
+      displayName: "Apellido"
+    }
   ];
 	
 	@property()
