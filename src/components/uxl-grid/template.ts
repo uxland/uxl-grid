@@ -6,7 +6,7 @@ import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 
 export const template = (props: UxlGrid) => html`${iconTemplate()}
-<custom-style>${props.extraStyles}</custom-style>
+<custom-style><style>${props.extraStyles}</style></custom-style>
 <div id="grid">
 	${
     props.showHeader
