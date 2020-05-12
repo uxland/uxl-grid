@@ -33,6 +33,8 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 	}
 
 	@property()
+	public extraStyles: any;
+	@property()
 	public source: any[] = [];
 
 	@property()

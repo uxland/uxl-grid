@@ -34,6 +34,7 @@ const renderItem = (item, indexRow) => html`
 `;
 
 export const template = (props: UxlGrid) => html`${iconTemplate()}
+<custom-style><style>${props.extraStyles}</style></custom-style>
 <div id="grid">
 	${
     props.showHeader
