@@ -61,3 +61,4 @@ The following custom events are available to listen
 | `uxl-grid-row-cell-selected`  | Click event in a table body cell  |
 
 
+Thanks
