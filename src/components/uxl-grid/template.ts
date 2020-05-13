@@ -6,8 +6,9 @@ import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import "@uxland/virtualizer";
 import "lit-virtualizer/lit-virtualizer";
+import { props } from 'ramda';
 
-const renderItem = (item, indexRow) => html`
+const renderItemFactory =(renderCard) => (item, indexRow) => html`
   <div
     id="row-${indexRow + 1}"
     class="content__row ${classMap({ disabled: item.item.disabled })}"
@@ -15,6 +16,9 @@ const renderItem = (item, indexRow) => html`
     data-item="${JSON.stringify(item.item)}"
     data-row="${indexRow + 1}"
   >
+  ${renderCard ? html`
+            <div class="card" part="card">${renderCard(item)}</div>
+          `: nothing}
     ${repeat(
       item.columns,
       (column: any, indexColumn) => html`
@@ -69,7 +73,7 @@ export const template = (props: UxlGrid) => html`${iconTemplate()}
       : nothing
   }
 	<div class="content" part="content" id="content">
-    <lit-virtualizer exportparts="content__row content__cell content__cell-*" .items="${props.virtualizeList}" .renderItem="${renderItem}"></lit-virtualizer>
+    <lit-virtualizer exportparts="content__row content__cell content__cell-*" .items="${props.virtualizeList}" .renderItem="${renderItemFactory(props.renderCard)}"></lit-virtualizer>
 	</div>
 </div>
 </div>
