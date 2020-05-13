@@ -17,7 +17,7 @@ const renderItemFactory =(renderCard) => (item, indexRow) => html`
     data-row="${indexRow + 1}"
   >
   ${renderCard ? html`
-            <div class="card" part="card">${renderCard(item)}</div>
+            <div class="card" part="card">${renderCard(item.item)}</div>
           `: nothing}
     ${repeat(
       item.columns,
