@@ -1,8 +1,8 @@
-import {html, LitElement, property, customElement, query, css, unsafeCSS} from 'lit-element';
-import {template} from './template';
-import styles from './styles.scss';
+import { listen } from '@uxland/uxl-utilities';
+import { css, customElement, html, LitElement, property, unsafeCSS } from 'lit-element';
 import { IColumns } from '../../src';
-import { id } from '@uxland/uxl-utilities';
+import styles from './styles.scss';
+import { template } from './template';
 interface Item {
 	id: number;
 	edad: number;
@@ -47,6 +47,16 @@ export class UxlGridDemo extends (LitElement) {
 	
 	@property()
 	public numberColumns: number;
+
+	@listen("uxl-grid-row-cell-selected", "uxl-grid")
+	rowSelected(e) {
+		console.log("row cell");
+	}
+
+	@listen("uxl-grid-content-cell-selected", "uxl-grid")
+	contentCellSelected(e) {
+		console.log("content cell")
+	}
 	
 	static get styles() {
 		return css`${unsafeCSS(styles)}`;
