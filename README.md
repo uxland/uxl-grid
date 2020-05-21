@@ -58,7 +58,7 @@ The following custom events are available to listen
 
 | Event name                    | Description                       |
 |-------------------------------|-----------------------------------|
-| `uxl-grid-row-cell-selected`  | Click event in a table body row cell  |
-| `uxl-grid-content-cell-selected` | Click event in a content cell  |
+| `uxl-grid-row-cell-selected`  | Click event in a table body cell  |
 
 
+Thanks

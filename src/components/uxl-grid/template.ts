@@ -1,20 +1,24 @@
+import "@uxland/virtualizer";
 import { html } from "lit-element/lit-element";
-import { UxlGrid } from "./uxl-grid";
-import { iconTemplate } from "../../icons/icons";
-import { repeat } from "lit-html/directives/repeat";
 import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
-import "@uxland/virtualizer";
+import { repeat } from "lit-html/directives/repeat";
 import "lit-virtualizer/lit-virtualizer";
+import { iconTemplate } from "../../icons/icons";
+import { UxlGrid } from "./uxl-grid";
 
-const renderItem = (item, indexRow) => html`
+const renderItemFactory =(renderCard, onClickContentRow, onClickContentCell,) => (item, indexRow) => html`
   <div
     id="row-${indexRow + 1}"
     class="content__row ${classMap({ disabled: item.item.disabled })}"
     part="content__row"
     data-item="${JSON.stringify(item.item)}"
     data-row="${indexRow + 1}"
+    @click="${onClickContentRow}"
   >
+  ${renderCard ? html`
+            <div class="card" part="card">${renderCard(item.item)}</div>
+          `: nothing}
     ${repeat(
       item.columns,
       (column: any, indexColumn) => html`
@@ -25,6 +29,7 @@ const renderItem = (item, indexRow) => html`
           data-item="${JSON.stringify(item.item)}"
           data-column="${indexColumn + 1}"
           data-row="${indexRow + 1}"
+          @click="${onClickContentCell}"
         >
           ${(column.renderCell && column.renderCell(item.item)) || item.renderValue(item.item, column.property)}
         </div>
@@ -34,6 +39,7 @@ const renderItem = (item, indexRow) => html`
 `;
 
 export const template = (props: UxlGrid) => html`${iconTemplate()}
+<custom-style><style>${props.extraStyles}</style></custom-style>
 <div id="grid">
 	${
     props.showHeader
@@ -47,6 +53,7 @@ export const template = (props: UxlGrid) => html`${iconTemplate()}
                   class="header__cell"
                   data-column-key="${column.displayName}"
                   part="header__cell header__cell-${index + 1}"
+                  @click="${props.onClickHeaderCell}"
                 >
                   ${column.displayName || ""}
                   ${column.order == "ASC"
@@ -68,7 +75,12 @@ export const template = (props: UxlGrid) => html`${iconTemplate()}
       : nothing
   }
 	<div class="content" part="content" id="content">
-    <lit-virtualizer exportparts="content__row content__cell content__cell-*" .items="${props.virtualizeList}" .renderItem="${renderItem}"></lit-virtualizer>
+    <lit-virtualizer 
+        exportparts="content__row content__cell content__cell-*" 
+        .items="${props.virtualizeList}" 
+        .renderItem="${renderItemFactory(props.renderCard, props.onClickTableRowCell, props.onClickTableCell)}"
+        >
+    </lit-virtualizer>
 	</div>
 </div>
 </div>

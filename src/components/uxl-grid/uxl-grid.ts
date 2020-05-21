@@ -1,36 +1,20 @@
-import {listen, propertiesObserver} from "@uxland/uxl-utilities";
-import {css, customElement, html, LitElement, property, query, unsafeCSS} from "lit-element";
-import styles from "./styles.scss";
-import {template} from "./template";
-import {IColumns} from "../../domain";
+import { propertiesObserver } from "@uxland/uxl-utilities";
+import { css, customElement, html, LitElement, property, unsafeCSS } from "lit-element";
 import * as R from "ramda";
+import { IColumns } from "../../domain";
+import styles from "./styles.scss";
+import { template } from "./template";
 
 // @ts-ignore
 @customElement("uxl-grid")
 export class UxlGrid extends propertiesObserver(LitElement) {
 
-	constructor() {
-		super();
-		this.gridWidth()
-	}
+	/**
+	 * Properties
+	 */
 
-	firstUpdated(e) {
-		this.orderedList = R.clone( this.source);
-		super.firstUpdated(e);
-		this.gridWidth();
-	}
-
-	connectedCallback(){
-		super.connectedCallback();
-		window.addEventListener('resize', this.gridWidth);
-		this.addEventListener("click", this.onClickWindow);
-}
-
-	disconnectedCallback(){
-		super.disconnectedCallback();
-		window.removeEventListener("resize", this.gridWidth);
-		this.removeEventListener("click", this.onClickWindow);
-	}
+	@property()
+	public extraStyles: any;
 
 	@property()
 	public source: any[] = [];
@@ -53,13 +37,10 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 	@property()
 	private selectedColumn: IColumns;
 
-	private findColumnIndex(displayName) {
-		return this.columns.findIndex((col) => col.displayName == (displayName || ""))
-	}
-	private findColumn(displayName): IColumns {
-		return this.columns[this.findColumnIndex(displayName)];
-	}
-	@listen("click", ".header__cell")
+	/**
+	 * Listeners
+	 */
+
 	public onClickHeaderCell(event) {
 		let htmlElement: HTMLElement = event.currentTarget;
 		let displayName = htmlElement.dataset['columnKey'];
@@ -68,7 +49,6 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		this.orderedList = R.clone(this.sortColumn());
 	}
 
-	@listen("click", ".content__row")
 	public onClickTableRowCell(event) {
 		let htmlElement: HTMLElement = event.currentTarget;
 		let item = JSON.parse(htmlElement.dataset['item']);
@@ -82,7 +62,6 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		}
 	}
 
-	@listen("click", ".content__cell")
 	public onClickTableCell(event) {
 		let htmlElement: HTMLElement = event.currentTarget;
 		let item = JSON.parse(htmlElement.dataset['item']);
@@ -95,6 +74,17 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 			});
 			this.dispatchEvent(onTableRowCellSelected);
 		}
+	}
+
+	/**
+	 * Methods
+	 */
+
+	private findColumnIndex(displayName) {
+		return this.columns.findIndex((col) => col.displayName == (displayName || ""))
+	}
+	private findColumn(displayName): IColumns {
+		return this.columns[this.findColumnIndex(displayName)];
 	}
 
 	toggleOrderField() {
@@ -161,10 +151,6 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		}
 	}
 
-	onClickWindow = () => {
-			this.source = R.clone(this.source);
-	}
-
 	renderValue(item, property){
 		if(item[property] != undefined && item[property] != null){
 			if(item[property] == 0 && typeof(item[property]) == "number"){
@@ -185,6 +171,25 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		this.virtualizeList = R.clone(this.orderedList.map((item) => {
 			return {item, renderCard: this.renderCard, columns: this.columns, renderValue: this.renderValue };
 		}))
+	}
+
+	constructor() {
+		super();
+		this.gridWidth()
+	}
+
+	firstUpdated(e) {
+		this.gridWidth();
+	}
+
+	connectedCallback(){
+		super.connectedCallback();
+		window.addEventListener('resize', this.gridWidth);
+}
+
+	disconnectedCallback(){
+		super.disconnectedCallback();
+		window.removeEventListener("resize", this.gridWidth);
 	}
 
 
