@@ -1,7 +1,6 @@
 import "@uxland/virtualizer";
 import { html } from "lit-element/lit-element";
 import { nothing } from "lit-html";
-import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
 import "lit-virtualizer/lit-virtualizer";
 import { iconTemplate } from "../../icons/icons";
@@ -10,7 +9,7 @@ import { UxlGrid } from "./uxl-grid";
 const renderItemFactory =(renderCard, onClickContentRow, onClickContentCell,) => (item, indexRow) => html`
   <div
     id="row-${indexRow + 1}"
-    class="content__row ${classMap({ disabled: item.item.disabled })}"
+    class="content__row"
     part="content__row"
     data-item="${JSON.stringify(item.item)}"
     data-row="${indexRow + 1}"

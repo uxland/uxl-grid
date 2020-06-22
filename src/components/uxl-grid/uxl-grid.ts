@@ -45,8 +45,10 @@ export class UxlGrid extends propertiesObserver(LitElement) {
 		let htmlElement: HTMLElement = event.currentTarget;
 		let displayName = htmlElement.dataset['columnKey'];
 		this.selectedColumn = this.findColumn(displayName);
-		this.columns = this.changeColumnOrder();
-		this.orderedList = R.clone(this.sortColumn());
+		if(!this.selectedColumn.disableSorting){
+			this.columns = this.changeColumnOrder();
+			this.orderedList = R.clone(this.sortColumn());
+		}
 	}
 
 	public onClickTableRowCell(event) {

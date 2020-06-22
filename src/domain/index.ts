@@ -4,7 +4,7 @@ export interface IColumns {
 	renderCell?: (item: any) => any;
 	orderCellValue?: (item: any) => any;
 	order?: IOrder;
-	disabled?: boolean
+	disableSorting?: boolean;
 }
 
 export type IOrder = "ASC" | "DES";
