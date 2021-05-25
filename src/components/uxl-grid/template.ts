@@ -4,7 +4,7 @@ import { nothing } from "lit-html";
 import { classMap } from "lit-html/directives/class-map";
 import { repeat } from "lit-html/directives/repeat";
 import "lit-virtualizer/lit-virtualizer";
-import { iconTemplate } from "../../icons/icons";
+import {icons} from "../../icons/icons";
 import { UxlGrid } from "./uxl-grid";
 
 const renderItemFactory =(renderCard, onClickContentRow, onClickContentCell,) => (item, indexRow) => html`
@@ -38,7 +38,7 @@ const renderItemFactory =(renderCard, onClickContentRow, onClickContentCell,) =>
   </div>
 `;
 
-export const template = (props: UxlGrid) => html`${iconTemplate()}
+export const template = (props: UxlGrid) => html`
 <custom-style><style>${props.extraStyles}</style></custom-style>
 <div id="grid">
 	${
@@ -58,12 +58,12 @@ export const template = (props: UxlGrid) => html`${iconTemplate()}
                   ${column.displayName || ""}
                   ${column.order == "ASC"
                     ? html`
-                        <iron-icon class="order" icon="uxl-grid:arrow-up"></iron-icon>
+                              <div class="icon">${icons.arrowUp}</div>
                       `
                     : html`
                         ${column.order == "DES"
                           ? html`
-                              <iron-icon class="order" icon="uxl-grid:arrow-down"></iron-icon>
+                                    <div class="icon">${icons.arrowDown}</div>
                             `
                           : nothing}
                       `}
@@ -75,9 +75,9 @@ export const template = (props: UxlGrid) => html`${iconTemplate()}
       : nothing
   }
 	<div class="content" part="content" id="content">
-    <lit-virtualizer 
-        exportparts="content__row content__cell content__cell-*" 
-        .items="${props.virtualizeList}" 
+    <lit-virtualizer
+        exportparts="content__row content__cell content__cell-*"
+        .items="${props.virtualizeList}"
         .renderItem="${renderItemFactory(props.renderCard, props.onClickTableRowCell, props.onClickTableCell)}"
         >
     </lit-virtualizer>
