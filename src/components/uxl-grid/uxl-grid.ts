@@ -44,7 +44,7 @@ export class UxlGrid extends propertiesObserver(LitElement) {
     let htmlElement: HTMLElement = event.currentTarget;
     let displayName = htmlElement.dataset['columnKey'];
     this.selectedColumn = this.findColumn(displayName);
-    if (!this.selectedColumn.disableSorting) {
+    if (!this.selectedColumn.disabled) {
       this.columns = this.changeColumnOrder();
       this.orderedList = R.clone(this.sortColumn());
     }
