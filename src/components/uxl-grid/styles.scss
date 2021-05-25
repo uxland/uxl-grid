@@ -40,8 +40,8 @@ $min-grid: calc((var(--grid-width) - 32px) / var(--number-columns));
 
       svg {
         fill: var(--uxl-grid-order-icon-color, blue);
-        width: var(--uxl-grid-order-icon-width, 1rem) !important;
-        height: var(--uxl-grid-order-icon-height, 1rem) !important;
+        width: var(--uxl-grid-order-icon-size, 1rem) !important;
+        height: var(--uxl-grid-order-icon-size, 1rem) !important;
       }
     }
   }
@@ -101,5 +101,9 @@ $min-grid: calc((var(--grid-width) - 32px) / var(--number-columns));
 lit-virtualizer {
   min-height: 1px;
   height: 100%;
+  overflow: var(--uxl-grid-overflow, auto);
+
+  @include desktop {
   overflow: var(--uxl-grid-overflow, overlay);
+  }
 }

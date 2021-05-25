@@ -41,15 +41,32 @@ The following properties can be used to set up the component information
 
 ##### Styling
 
-The following custom parts are available for styling
+##### Stylable Shadow Parts
 
-| Css part name              | Description                      |
-|----------------------------|----------------------------------|
-| `table`                    | Customize table tag              |
-| `table__header`            | Customize table header           |
-| `table__header_cell`       | Customize table header cell      |
-| `table__row`               | Customize table row for boy table|
-| `table__row-cell`          | Customize table row cell         |
+The following styleable part's of the element `uxl-grid` are available for styling:
+
+| Shadow tree part                                     | Description                         | Style outside of shadow tree                     |
+| ---------------------------------------------------- | ----------------------------------- | ------------------------------------------------ |
+| `<div class="header" part="header">...`     | Customize header row grid  | `uxl-grid::part(header) {...}`    |
+| `<div id="header-cell-${index + 1}" part="header__cell-${index + 1}">...`      | Customize header cell grid   | `uxl-grid::part(header__cell-${index+1)) {...}`   |
+| `<div id="row-${index + 1}" part="content__row">...`      | Customize table row for boy table   | `uxl-grid::part(content__row) {...}`   |
+| `div id="column-${index + 1}" part="content__cell-${index + 1}">...`      | Customize table row cell   | `uxl-grid::part(content__cell-${index+1) {...}`   |
+
+##### Mixins
+
+The following custom properties and mixins are available for styling:
+
+| Custom property                                | Description                                          | Default             |
+| ---------------------------------------------- | ---------------------------------------------------- | ------------------- |
+| `--uxl-grid-gap`                              | Gap of the grid               | `16px`              |
+| `--uxl-grid-order-icon-color`                  | The color of the order icons               | `blue`              |
+| `--uxl-grid-order-icon-size`                  | The size of the order icons               | `1rem`              |
+| `--uxl-grid-row-hover-color`                   | The background color of hover row               | `lightcyan`         |
+| `--uxl-grid-row-disabled-color`                | The background color of disabled row              | `lightcyan`         |
+| `--uxl-grid-overflow`                | The type of overflow             | `overlay`         |
+| `--uxl-grid-row-color`                | The color of text content cells            | `black`         |
+| `--uxl-grid-row-disabled-background-color`                | The background color of disabled row            | `black`         |
+| `--uxl-grid-row-disabled-color`                | The color of text of disabled row            | `black`         |
 
 
 ##### Events
