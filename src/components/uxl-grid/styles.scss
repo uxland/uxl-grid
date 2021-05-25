@@ -29,20 +29,25 @@ $min-grid: calc((var(--grid-width) - 32px) / var(--number-columns));
   }
 
   .header__cell {
+    @include layout;
     padding: 16px 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
-    iron-icon {
-      --iron-icon-fill-color: var(--uxl-grid-order-icon-color);
-      --iron-icon-width: var(--uxl-grid-order-icon-width);
-      --iron-icon-height: var(--uxl-grid-order-icon-height);
+    .icon {
+      padding-left: var(--uxl-grid-order-separator, .5rem) !important;
+
+      svg {
+        fill: var(--uxl-grid-order-icon-color, blue);
+        width: var(--uxl-grid-order-icon-size, 1rem) !important;
+        height: var(--uxl-grid-order-icon-size, 1rem) !important;
+      }
     }
   }
 }
 
-#grid{
+#grid {
   height: 100%;
   min-height: 1px;
 }
@@ -50,24 +55,26 @@ $min-grid: calc((var(--grid-width) - 32px) / var(--number-columns));
 .content {
   height: 100%;
   min-height: 1px;
-  
+
   .card {
     display: none;
-    @include phone{
+    @include phone {
       display: flex;
     }
   }
+
   .content__row {
     @include format-grid;
     border-bottom: 1px solid grey;
     color: var(--uxl-grid-row-color);
     width: 100%;
 
-    .card--enabled{
+    .card--enabled {
       @include phone {
         display: none;
       }
     }
+
     &:hover:not(.disabled) {
       background-color: var(--uxl-grid-row-hover-color);
       cursor: pointer;
@@ -91,7 +98,12 @@ $min-grid: calc((var(--grid-width) - 32px) / var(--number-columns));
   }
 }
 
-lit-virtualizer{
+lit-virtualizer {
   min-height: 1px;
   height: 100%;
+  overflow: var(--uxl-grid-overflow, auto);
+
+  @include desktop {
+  overflow: var(--uxl-grid-overflow, overlay);
+  }
 }
