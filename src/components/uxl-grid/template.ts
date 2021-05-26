@@ -58,7 +58,7 @@ export const template = (props: UxlGrid) => html`
 													@click="${props.onClickHeaderCell}"
 											>
 												${column.displayName || ""}
-                                                ${!column.disabled ? html`
+                                                ${!column.disableSorting ? html`
 												${column.order == "ASC"
 														? html`
 															<div class="icon">${icons.arrowUp}</div>
