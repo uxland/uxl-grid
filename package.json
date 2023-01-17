@@ -71,7 +71,7 @@
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/polymer": "^3.3.0",
-    "@uxland/autocomplete": "^2.0.2",
+    "@uxland/autocomplete": "^2.0.10",
     "@uxland/uxl-style-utilities": "^1.0.17",
     "@uxland/uxl-utilities": "^3.3.9",
     "@uxland/virtualizer": "^1.0.1",
